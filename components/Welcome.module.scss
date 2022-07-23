@@ -1,0 +1,23 @@
+.Welcome {
+  max-width: 400px;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 18vw;
+}
+
+.logo {
+  transform-origin: center center;
+  animation: spin3d 3s linear infinite;
+}
+@keyframes spin3d {
+    from {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg);
+    }
+}
