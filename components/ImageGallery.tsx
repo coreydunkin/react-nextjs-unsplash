@@ -6,7 +6,7 @@ export default function ImageGallery({ data }) {
     <div className="container">
       <div className="row mt-3 image__gallery">
         <div className="card-columns">
-          {data.map((item) => {
+          {data?.map((item) => {
             return (
               <ImageItem key={item.id} item={item} />
             );
