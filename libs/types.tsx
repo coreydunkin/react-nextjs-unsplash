@@ -1,7 +1,13 @@
 export interface IunsplashDataResult {
-  data: IunsplashDataItem[],
+  data: IunsplashDataObj | any,
   loading: boolean,
   error: boolean
+}
+
+export interface IunsplashDataObj {
+  total: number,
+  totalPages: number,
+  results?: IunsplashDataItem[]
 }
 
 export interface IunsplashDataItem {

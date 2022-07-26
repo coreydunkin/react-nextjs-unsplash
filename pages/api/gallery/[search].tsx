@@ -16,7 +16,8 @@ export default function getSearch(
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
       res.setHeader('Cache-Control', 'max-age=180000');
-      res.status(200).json(result.response.results);
+      //res.status(200).json(result.response.results);
+      res.status(200).json({ total: result.response.total, totalPages: result.response.total_pages, results: result.response.results });
       resolve();
     }).catch((error) => {
       res.json(error);

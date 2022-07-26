@@ -5,10 +5,11 @@ import useSWRFetch from "../hooks/useSWRFetch";
 import {GalleryDataContext} from "./_app";
 import {ButtonGroup, Button} from "@mui/material";
 import {Grid} from "@mui/material";
+import {IunsplashDataResult} from "../libs/types";
 
 export default function Home() {
   const { query, page, limit, setPage } = useContext(GalleryDataContext);
-  const {data, loading, error} = useSWRFetch(query, limit, page);
+  const { data, loading, error }: IunsplashDataResult = useSWRFetch(query, limit, page);
   console.log(data)
   return (
       <div>
@@ -30,7 +31,7 @@ export default function Home() {
 
         {/*{isLoading && <Loading />}*/}
         {/*{isError && <Error />}*/}
-        {data && <ImageGallery data={data}/>}
+        {data && <ImageGallery data={data.results}/>}
 
         {/*{JSON.stringify(data)}*/}
 
