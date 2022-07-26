@@ -20,5 +20,9 @@ You can start the dev server by running:
 yarn dev
 ```
 
+You'll need to fetch an API key from unsplash, then you can link to that api key from your env.local file
+
+Have fun!
+
 [next]: https://nextjs.org
 [unsplash]: https://unsplash.com/documentation
