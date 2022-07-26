@@ -3,8 +3,8 @@
 ## Introduction
 A Next.js application using Unsplash-js api along with SWR to fetch images.
 
-This is a [Next.js][next] application skeleton. 
-Pages are in the `pages` directory. 
+This is a [Next.js][next] application skeleton.
+Pages are in the `pages` directory.
 Components are in the `components` directory.
 
 To get started, clone this repo and run:

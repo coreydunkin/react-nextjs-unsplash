@@ -71,27 +71,27 @@ export default function ImageItem({ item }) {
     <ThemeProvider theme={theme}>
       <ImageListItem>
         <Link href={`/${item.user.username}`}>
-        <CardContainer as={motion.div}
-          whileHover={cardAnimations.hoverAnim}
-          initial={cardAnimations.initialAnim}
-          animate={cardAnimations.anim}
-          transition={cardAnimations.transitionAnim.opacityAnim}
-        >
-          <CardImg width={item.width} height={item.height} src={item.urls.small} alt={item.id} blurDataURL={item.urls.thumb} placeholder={'blur'} />
-          <CardText
-            title={<p><span>Author: </span>@{item.user.username}</p>}
-            subtitle={item.author}
-            actionIcon={
-              <IconButton
-                sx={{ color: `${theme.palette.primary.contrastText}` }}
-                aria-label={`info about ${item.title}`}
-              >
-                <InfoIcon />
-              </IconButton>
-            }
+          <CardContainer as={motion.div}
+                         whileHover={cardAnimations.hoverAnim}
+                         initial={cardAnimations.initialAnim}
+                         animate={cardAnimations.anim}
+                         transition={cardAnimations.transitionAnim.opacityAnim}
           >
-          </CardText>
-        </CardContainer>
+            <CardImg width={item.width} height={item.height} src={item.urls.small} alt={item.id} blurDataURL={item.urls.thumb} placeholder={'blur'} />
+            <CardText
+              title={<p><span>Author: </span>@{item.user.username}</p>}
+              subtitle={item.author}
+              actionIcon={
+                <IconButton
+                  sx={{ color: `${theme.palette.primary.contrastText}` }}
+                  aria-label={`info about ${item.title}`}
+                >
+                  <InfoIcon />
+                </IconButton>
+              }
+            >
+            </CardText>
+          </CardContainer>
         </Link>
       </ImageListItem>
     </ThemeProvider>
