@@ -1,24 +1,19 @@
-
-//import {createTheme, styled, ThemeProvider} from "@mui/system";
 import {createTheme, styled, ThemeProvider} from "@mui/material";
-import { rgba, tint, lighten, shade, complement, invert, meetsContrastGuidelines } from "polished";
-import {Grid} from "@mui/material";
+import { rgba, tint, shade, invert, meetsContrastGuidelines } from "polished";
 import {ImageListItem, ImageListItemBar} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-import { ListItemText } from '@mui/material';
-import {useEffect, useState} from "react";
+import Image from 'next/image';
 
-const CardImg = styled("img")`
+const CardImg = styled(Image)`
   background-color: ${props => props.theme.palette.primary.main};
-  //padding: 0.2em;
   width: 100%;
 `
 
 const StyledImageListItemBar = styled(ImageListItemBar)` 
   background-color: ${props => props.theme.palette.primary.main};
   cursor: pointer;
-  bottom: 7px;
+  bottom: 6px;
   .MuiImageListItemBar-title {
     color: ${props => props.theme.palette.primary.contrastText};
     span {
@@ -48,7 +43,7 @@ export default function ImageItem({ item }) {
   return (
     <ThemeProvider theme={theme}>
       <ImageListItem>
-        <CardImg src={item.urls.small} alt={item.id} loading="lazy" />
+        <CardImg width={item.width} height={item.height} src={item.urls.small} alt={item.id} blurDataURL={item.urls.thumb} placeholder={"blur"} />
         <StyledImageListItemBar
           title={<p><span>Author: </span>@{item.user.username}</p>}
 

@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect, useRef} from "react";
+import React, {useState, useContext} from "react";
 import {GalleryDataContext} from "../pages/_app";
 import {Paper} from "@mui/material";
 import InputBase from '@mui/material/InputBase';
