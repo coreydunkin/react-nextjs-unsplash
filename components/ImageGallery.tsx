@@ -8,9 +8,10 @@ export default function ImageGallery({ data }) {
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <ImageList variant="masonry" cols={!matches ? 1 : 3} gap={8}>
-      {data?.map((item) => {
+      {data?.map((item, index) => {
+        const itemData = {...item, indexNum: index};
         return (
-          <ImageItem key={item.id} item={item} />
+          <ImageItem key={item.id} item={itemData} />
         );
       })}
     </ImageList>
