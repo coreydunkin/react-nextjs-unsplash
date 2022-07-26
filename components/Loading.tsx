@@ -1,12 +1,12 @@
-import {Paper} from '@mui/material';
+import {Paper} from "@mui/material";
 import {styled} from '@mui/material';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import {motion} from 'framer-motion';
+import {motion} from "framer-motion";
 
 const spinTransition = {
   repeat: Infinity,
-  ease: 'easeInOut',
+  ease: "easeInOut",
   duration: 1
 };
 
@@ -36,7 +36,7 @@ const LoadingContainer = styled(Box)`
 export default function Loading() {
   return (
     <LoadingContainer>
-      <Paper className='inner' component={Stack} direction='column' justifyContent='center' alignItems='center'>
+      <Paper className="inner" component={Stack} direction="column" justifyContent="center" alignItems="center">
         <Spinner as={motion.span} animate={{ rotate: 360 }} transition={spinTransition} />
       </Paper>
     </LoadingContainer>

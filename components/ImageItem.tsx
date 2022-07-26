@@ -1,33 +1,21 @@
-import {createTheme, styled, ThemeProvider} from '@mui/material';
-import {rgba, tint, shade, invert, meetsContrastGuidelines} from 'polished';
-import {ImageListItem, ImageListItemBar} from '@mui/material';
+import {createTheme, styled, ThemeProvider} from "@mui/material";
+import { rgba, tint, shade, invert, meetsContrastGuidelines } from "polished";
+import {ImageListItem, ImageListItemBar} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import Image from 'next/image';
-import {motion} from 'framer-motion';
-import Link from 'next/link';
 
 const CardImg = styled(Image)`
-  transform: scale(var(--scale));
-  transition: all 0.2s ease-out;
   background-color: ${props => props.theme.palette.primary.main};
   width: 100%;
-  height: auto;
-`
-const CardContainer = styled(motion.div)`
-  background-color: ${props => props.theme.palette.primary.main};
-  line-height:0;
-  cursor: pointer;
 `
 
-const CardText = styled(ImageListItemBar)`
+const StyledImageListItemBar = styled(ImageListItemBar)` 
   background-color: ${props => props.theme.palette.primary.main};
+  cursor: pointer;
+  bottom: 6px;
   .MuiImageListItemBar-title {
     color: ${props => props.theme.palette.primary.contrastText};
-    p {
-      margin: var(--textMargin);
-      transition: all 0.2s ease-out;  
-    }
     span {
       font-weight: 600;
     } 
@@ -52,47 +40,26 @@ export default function ImageItem({ item }) {
     }
   });
 
-  // Set up animations with framer motion
-  // to pass animations to children we use a css variable name '--example'
-  const cardAnimations = {
-    initialAnim: {'--textMargin': '2px 0', '--scale': 1, opacity: 0.2},
-    anim: {opacity: 1},
-    transitionAnim: {
-      opacityAnim: ({ opacity: { delay: 0.2 + (parseInt(`0.${item.indexNum}5`) * 3), duration: 0.4 }})
-    },
-    hoverAnim: {
-      '--scale': 1.05,
-      '--textMargin': '10px 0',
-      transition: {duration: 0.2, ease: 'easeInOut'}
-    }
-  }
-
   return (
     <ThemeProvider theme={theme}>
       <ImageListItem>
-        <Link href={`/${item.user.username}`}>
-          <CardContainer as={motion.div}
-                         whileHover={cardAnimations.hoverAnim}
-                         initial={cardAnimations.initialAnim}
-                         animate={cardAnimations.anim}
-                         transition={cardAnimations.transitionAnim.opacityAnim}
-          >
-            <CardImg width={item.width} height={item.height} src={item.urls.small} alt={item.id} blurDataURL={item.urls.thumb} placeholder={'blur'} />
-            <CardText
-              title={<p><span>Author: </span>@{item.user.username}</p>}
-              subtitle={item.author}
-              actionIcon={
-                <IconButton
-                  sx={{ color: `${theme.palette.primary.contrastText}` }}
-                  aria-label={`info about ${item.title}`}
-                >
-                  <InfoIcon />
-                </IconButton>
-              }
+        <CardImg width={item.width} height={item.height} src={item.urls.small} alt={item.id} blurDataURL={item.urls.thumb} placeholder={"blur"} />
+        <StyledImageListItemBar
+          title={<p><span>Author: </span>@{item.user.username}</p>}
+
+          subtitle={item.author}
+          actionIcon={
+            <IconButton
+              sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+              aria-label={`info about ${item.title}`}
             >
-            </CardText>
-          </CardContainer>
-        </Link>
+              <InfoIcon />
+            </IconButton>
+          }
+        >
+        </StyledImageListItemBar>
+
+
       </ImageListItem>
     </ThemeProvider>
   );
