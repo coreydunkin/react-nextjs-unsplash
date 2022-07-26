@@ -1,29 +1,70 @@
+
+//import {createTheme, styled, ThemeProvider} from "@mui/system";
+import {createTheme, styled, ThemeProvider} from "@mui/material";
+import { rgba, tint, lighten, shade, complement, invert, meetsContrastGuidelines } from "polished";
+import {Grid} from "@mui/material";
+import {ImageListItem, ImageListItemBar} from "@mui/material";
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
+import { ListItemText } from '@mui/material';
+import {useEffect, useState} from "react";
+
+const CardImg = styled("img")`
+  background-color: ${props => props.theme.palette.primary.main};
+  //padding: 0.2em;
+  width: 100%;
+`
+
+const StyledImageListItemBar = styled(ImageListItemBar)` 
+  background-color: ${props => props.theme.palette.primary.main};
+  cursor: pointer;
+  .MuiImageListItemBar-title {
+    color: ${props => props.theme.palette.primary.contrastText};
+    span {
+      font-weight: 600;
+    } 
+  } 
+`;
+
 export default function ImageItem({ item }) {
+  let bgColor = shade(0.025, `${rgba(`${item.color}`, 0.80)}`);
+  let textColor = invert(`${rgba(`${item.color}`, 1)}`);
+  // Check if the title colour is properly contrasted with the background
+  // If not, mix the colour with white
+  if(!meetsContrastGuidelines(bgColor, textColor).AA) {
+    textColor = `${tint(0.80, `${rgba(`${item.color}`, 1)}`)}`
+  }
+
+  const theme = createTheme( {
+    palette: {
+      primary: {
+        main: bgColor,
+        contrastText: textColor,
+      }
+    }
+  });
+
   return (
-    <div
-      className="image-card card"
-      key={item.id}
-    >
-      <img className="card-img-top" src={item.urls.thumb} alt={item.id} />
-      <div className="card-body">
-        <div className="d-flex justify-content-between">
-          <div>
-            <i className="fa fa-user-circle pr-1" aria-hidden="true"></i>
-            <a
-              href={item.user.portfolio_url}
-              target="_blank"
-              rel="noreferrer"
-              className="text-dark"
+    <ThemeProvider theme={theme}>
+      <ImageListItem>
+        <CardImg src={item.urls.small} alt={item.id} loading="lazy" />
+        <StyledImageListItemBar
+          title={<p><span>Author: </span>@{item.user.username}</p>}
+
+          subtitle={item.author}
+          actionIcon={
+            <IconButton
+              sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+              aria-label={`info about ${item.title}`}
             >
-              {item.user.username}
-            </a>
-          </div>
-          <p className="likes">
-            <i className="fa fa-heart" aria-hidden="true"></i>
-            <span className="pl-1 like__title">{item.likes}</span>
-          </p>
-        </div>
-      </div>
-    </div>
+              <InfoIcon />
+            </IconButton>
+          }
+        >
+        </StyledImageListItemBar>
+
+
+      </ImageListItem>
+    </ThemeProvider>
   );
 }
