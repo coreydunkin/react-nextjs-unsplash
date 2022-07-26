@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-export default function SearchHandler({ handleSubmit, handleClear }) {
+export default function Search({ handleSubmit, handleClear }) {
   const formRef = useRef();
   const [searchText, setSearchText] = useState(null);
 
