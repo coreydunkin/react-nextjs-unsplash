@@ -10,7 +10,6 @@ import {IunsplashDataResult} from "../libs/types";
 export default function Home() {
   const { query, page, limit, setPage } = useContext(GalleryDataContext);
   const { data, loading, error }: IunsplashDataResult = useSWRFetch(query, limit, page);
-  console.log(data)
   return (
       <div>
         <Grid container spacing={2}>
