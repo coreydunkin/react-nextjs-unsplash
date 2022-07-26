@@ -9,10 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.2",
     "@types/unsplash-js": "^7.0.0",
     "axios": "^0.27.2",
     "framer-motion": "^6.5.1",
+    "gh-pages": "^4.0.0",
+    "material-ui-search-bar": "^1.0.0",
     "next": "12.1.6",
+    "polished": "^4.2.2",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "sass": "^1.51.0",

@@ -25,3 +25,11 @@ export interface IunsplashDataItem {
   user: {id: string, updated_at: string, username: string, name: string, first_name: string},
   width: number
 }
+
+export interface IGalleryDataContext {
+  page: number,
+  query: string,
+  limit: number,
+  setPage: Function,
+  setQuery: Function
+}

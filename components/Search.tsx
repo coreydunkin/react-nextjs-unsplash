@@ -1,46 +1,58 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useContext} from "react";
+import {GalleryDataContext} from "../pages/_app";
+import {Paper} from "@mui/material";
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+import ClearIcon from '@mui/icons-material/Clear';
+import styled from "styled-components";
 
-export default function Search({ handleSubmit, handleClear }) {
-  const formRef = useRef();
-  const [searchText, setSearchText] = useState(null);
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    handleSubmit(searchText);
-  };
 
-  const clearComplete = () => {
-    // @ts-ignore
-    formRef.current.reset();
-    handleClear();
-  };
+export default function Search() {
+  const { setQuery, setPage } = useContext(GalleryDataContext);
+  const [searchValue, setSearchValue] = useState("");
+
+  // Clear out the search and reset the pagination
+  function handleClear() {
+    setSearchValue("");
+    setQuery(null);
+    setPage(1);
+  }
 
   return (
-    <div className="search__handler">
-      <div className="container pt-4 pb-4">
-        <form onSubmit={handleFormSubmit} ref={formRef}>
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control search__input"
-              placeholder="Search for images"
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-            <div className="input-group-append">
-              <button type="submit" className="btn btn-outline-dark">
-                Search
-              </button>
-              <button
-                className="btn btn-outline-dark"
-                type="button"
-                onClick={clearComplete}
-              >
-                Clear
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+    <>
+      <Paper
+        component="form"
+        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "100%", maxWidth: 400 }}
+      >
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          value={searchValue}
+          placeholder="Search for images"
+          inputProps={{ 'aria-label': 'search google maps' }}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
+        />
+        {searchValue.length > 0 && (
+          <IconButton
+            sx={{ p: '10px' }}
+            aria-label="clear"
+            onClick={handleClear}
+          >
+            <ClearIcon  />
+          </IconButton>
+        )}
+        <IconButton
+          type="submit"
+          sx={{ p: '10px' }}
+          aria-label="search"
+          onClick={(e) => {e.preventDefault(), setQuery(searchValue)}}
+        >
+          <SearchIcon  />
+        </IconButton>
+      </Paper>
+    </>
   );
 }
