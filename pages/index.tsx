@@ -22,6 +22,7 @@ export default function Home() {
 
   return (
       <div>
+
         <Search handleSubmit={handleSubmit} handleClear={handleClear} />
         <p>Show us the {query} query</p>
         {query !== null &&
@@ -37,6 +38,7 @@ export default function Home() {
         {data && <ImageGallery data={data}/>}
 
         {/*{JSON.stringify(data)}*/}
+
       </div>
     )
 }
