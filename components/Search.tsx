@@ -1,13 +1,10 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect, useRef} from "react";
 import {GalleryDataContext} from "../pages/_app";
 import {Paper} from "@mui/material";
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
-import styled from "styled-components";
-
-
 
 export default function Search() {
   const { setQuery, setPage } = useContext(GalleryDataContext);

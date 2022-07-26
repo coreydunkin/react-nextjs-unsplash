@@ -6,22 +6,25 @@ import {GalleryDataContext} from "./_app";
 import {ButtonGroup, Button} from "@mui/material";
 import {Grid} from "@mui/material";
 import {IunsplashDataResult} from "../libs/types";
+import {Pagination} from "@mui/material";
 
 export default function Home() {
-  const { query, page, limit, setPage } = useContext(GalleryDataContext);
-  const { data, loading, error }: IunsplashDataResult = useSWRFetch(query, limit, page);
+  const {query, page, limit, setPage} = useContext(GalleryDataContext);
+  const {data, loading, error}: IunsplashDataResult = useSWRFetch(query, limit, page);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
   return (
       <div>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={10}>
+          <Grid item xs={12} md={8}>
             <Search />
           </Grid>
-          <Grid item xs={12} md={2}>
-            {query !== null &&
-              <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                <Button disabled={page === 1} onClick={() => setPage(page > 1 ? page - 1 : 1)}>Previous</Button>
-                <Button onClick={() => setPage(page + 1)}>Next</Button>
-              </ButtonGroup>
+          <Grid item xs={12} md={4}>
+            {query !== null && data?.totalPages > 0 &&
+              <>
+                <Pagination count={data?.totalPages} variant="outlined" shape="rounded" page={page} onChange={handleChange} />
+              </>
             }
           </Grid>
         </Grid>

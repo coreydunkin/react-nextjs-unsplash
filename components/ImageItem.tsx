@@ -18,12 +18,13 @@ const CardImg = styled("img")`
 const StyledImageListItemBar = styled(ImageListItemBar)` 
   background-color: ${props => props.theme.palette.primary.main};
   cursor: pointer;
+  bottom: 7px;
   .MuiImageListItemBar-title {
     color: ${props => props.theme.palette.primary.contrastText};
     span {
       font-weight: 600;
     } 
-  } 
+  }
 `;
 
 export default function ImageItem({ item }) {

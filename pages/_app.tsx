@@ -1,5 +1,5 @@
 import '../styles/globals.scss'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {IGalleryDataContext} from "../libs/types";
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
