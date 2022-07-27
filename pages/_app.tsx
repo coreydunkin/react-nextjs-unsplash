@@ -1,10 +1,11 @@
 import '../styles/globals.scss'
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {IGalleryDataContext} from "../libs/types";
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import {styled} from "@mui/system";
+
 export const GalleryDataContext = React.createContext<IGalleryDataContext>({} as IGalleryDataContext);
 
 const StyledContainer = styled(Container)`

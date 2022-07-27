@@ -23,7 +23,7 @@ const CardText = styled(ImageListItemBar)`
   .MuiImageListItemBar-title {
     color: ${props => props.theme.palette.primary.contrastText};
     p {
-      margin: 2px 0;
+      margin: var(--textMargin); 
     }
     span {
       font-weight: 600;
@@ -49,15 +49,18 @@ export default function ImageItem({ item }) {
     }
   });
 
+  // Set up animations with framer motion
+  // to pass animations to children we use a css variable name '--example'
   const cardAnimations = {
-    initialAnim: {'--textMargin': '7px 0', '--scale': 1, opacity: 0.2},
+    initialAnim: {'--textMargin': '2px 0', '--scale': 1, opacity: 0.2},
     anim: {opacity: 1},
     transitionAnim: {
       opacityAnim: ({ opacity: { delay: 0.2 + (parseInt(`0.${item.indexNum}5`) * 3), duration: 0.4 }})
     },
     hoverAnim: {
       '--scale': 1.05,
-      transition: {duration: 0.2}
+      '--textMargin': '10px 0',
+      transition: {duration: 0.2, ease: 'easeOut'}
     }
   }
 
