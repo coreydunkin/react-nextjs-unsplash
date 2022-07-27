@@ -3,7 +3,7 @@ import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import {styled} from "@mui/system";
+import {styled} from '@mui/material';
 import GalleryContextProvider from '../providers/GalleryDataProvider';
 
 const StyledContainer = styled(Container)`
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <GalleryContextProvider>
       <CssBaseline />
-      <StyledContainer maxWidth="lg">
+      <StyledContainer maxWidth='lg'>
         <Box>
           <Component {...pageProps} />
         </Box>
