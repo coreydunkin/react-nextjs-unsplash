@@ -1,7 +1,7 @@
 # NEXT.js Unsplash-js gallery starter
 
 ## Introduction
-A Next.js application using unsplash-js api along with SWR to fetch images.
+A Next.js application using Unsplash-js api along with SWR to fetch images.
 
 This is a [Next.js][next] application skeleton. 
 Pages are in the `pages` directory. 
