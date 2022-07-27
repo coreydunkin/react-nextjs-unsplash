@@ -1,9 +1,9 @@
 import { Pagination } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { GalleryDataContext } from '../pages/_app';
+import {GalleryDataContext} from '../providers/GalleryDataProvider';
 
-export default function PaginationItem({ data }) {
-  const {page, setPage} = useContext(GalleryDataContext);
+export default function PaginationItem() {
+  const {page, setPage, data, query} = useContext(GalleryDataContext);
   const [totalPages, setTotalPages] = useState(0);
   useEffect(() => {
     data?.totalPages && data?.totalPages !== totalPages && setTotalPages(data?.totalPages);
@@ -13,8 +13,8 @@ export default function PaginationItem({ data }) {
   };
   return (
     <>
-      {data.query !== null && totalPages > 0 &&
-        <Pagination count={totalPages} variant="outlined" shape="rounded" page={page} onChange={handleChange} />
+      {query !== null && totalPages > 0 &&
+        <Pagination count={totalPages} variant='outlined' shape='rounded' page={page} onChange={handleChange} />
       }
     </>
   );
