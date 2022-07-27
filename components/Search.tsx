@@ -1,5 +1,5 @@
-import React, {useState, useContext} from 'react';
-import {GalleryDataContext} from '../pages/_app';
+import React, {useState, useContext, useEffect} from 'react';
+import {GalleryDataContext} from '../providers/GalleryDataProvider';
 import {Paper} from '@mui/material';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 
 export default function Search() {
-  const { setQuery, setPage } = useContext(GalleryDataContext);
+  const { setQuery, setPage, query } = useContext(GalleryDataContext);
   const [searchValue, setSearchValue] = useState('');
 
   // Clear out the search and reset the pagination
@@ -16,6 +16,11 @@ export default function Search() {
     setQuery(null);
     setPage(1);
   }
+
+  // When we come back to the home page, where search is available, retain the search field
+  useEffect(() => {
+    query !== null && setSearchValue(query);
+  }, [query]);
 
   return (
     <>
@@ -32,7 +37,7 @@ export default function Search() {
             setSearchValue(e.target.value);
           }}
         />
-        {searchValue.length > 0 && (
+        {query !== null && searchValue.length > 0 && (
           <IconButton
             sx={{ p: '10px' }}
             aria-label='clear'
@@ -45,7 +50,7 @@ export default function Search() {
           type='submit'
           sx={{ p: '10px' }}
           aria-label='search'
-          onClick={(e) => {e.preventDefault(), setQuery(searchValue)}}
+          onClick={(e) => {e.preventDefault(), setQuery(searchValue), setPage(1)}}
         >
           <SearchIcon  />
         </IconButton>

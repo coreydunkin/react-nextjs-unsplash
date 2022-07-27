@@ -22,11 +22,11 @@ export interface IunsplashDataItem {
   topic_submissions: {},
   updated_at: string,
   urls: {raw: string, full: string, regular: string, small: string, thumb: string},
-  user: {id: string, updated_at: string, username: string, name: string, first_name: string},
+  user: {id: string, updated_at: string, username: string, name: string, first_name: string, profile_image: {small: string, medium: string, large: string}, links: {html: string}},
   width: number
 }
 
-export interface IGalleryDataContext {
+export interface IGalleryDataContext extends IunsplashDataResult{
   page: number,
   query: string,
   limit: number,

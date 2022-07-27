@@ -1,14 +1,15 @@
 import {createTheme, styled, ThemeProvider} from '@mui/material';
-import { rgba, tint, shade, invert, meetsContrastGuidelines } from 'polished';
+import {rgba, tint, shade, invert, meetsContrastGuidelines} from 'polished';
 import {ImageListItem, ImageListItemBar} from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import Image from 'next/image';
 import {motion} from 'framer-motion';
+import Link from 'next/link';
 
 const CardImg = styled(Image)`
   transform: scale(var(--scale));
-  transition: all 0.4s ease-out;
+  transition: all 0.2s ease-out;
   background-color: ${props => props.theme.palette.primary.main};
   width: 100%;
   height: auto;
@@ -25,7 +26,7 @@ const CardText = styled(ImageListItemBar)`
     color: ${props => props.theme.palette.primary.contrastText};
     p {
       margin: var(--textMargin);
-      transition: all 0.4s ease-out; 
+      transition: all 0.2s ease-out;  
     }
     span {
       font-weight: 600;
@@ -69,6 +70,7 @@ export default function ImageItem({ item }) {
   return (
     <ThemeProvider theme={theme}>
       <ImageListItem>
+        <Link href={`/${item.user.username}`}>
         <CardContainer as={motion.div}
           whileHover={cardAnimations.hoverAnim}
           initial={cardAnimations.initialAnim}
@@ -90,6 +92,7 @@ export default function ImageItem({ item }) {
           >
           </CardText>
         </CardContainer>
+        </Link>
       </ImageListItem>
     </ThemeProvider>
   );
