@@ -1,10 +1,12 @@
 import '../styles/globals.scss'
-import React from 'react';
+import React, {useState} from 'react';
+import {IGalleryDataContext} from "../libs/types";
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import {styled} from '@mui/material';
-import GalleryContextProvider from '../providers/GalleryDataProvider';
+import {styled} from "@mui/system";
+
+export const GalleryDataContext = React.createContext<IGalleryDataContext>({} as IGalleryDataContext);
 
 const StyledContainer = styled(Container)`
   background-color: #eee;
@@ -15,15 +17,21 @@ const StyledContainer = styled(Container)`
 `;
 
 function MyApp({ Component, pageProps }) {
+  // Set the initial values for the gallery page
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<null | string>(null);
+  const limit: number = 10;
+  const value = {page, query, limit, setPage, setQuery};
+
   return (
-    <GalleryContextProvider>
+    <GalleryDataContext.Provider value={value}>
       <CssBaseline />
-      <StyledContainer maxWidth='lg'>
+      <StyledContainer maxWidth="lg">
         <Box>
           <Component {...pageProps} />
         </Box>
       </StyledContainer>
-    </GalleryContextProvider>
+    </GalleryDataContext.Provider>
   )
 }
 
