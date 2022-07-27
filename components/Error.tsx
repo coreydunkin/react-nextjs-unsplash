@@ -1,4 +1,4 @@
-import {Paper} from "@mui/material";
+import {Paper} from '@mui/material';
 import {styled} from '@mui/material';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -19,11 +19,11 @@ const ErrorContainer = styled(Box)`
 export default function Error() {
   return (
     <ErrorContainer>
-      <Paper className="inner" component={Stack} direction="column" justifyContent="center">
-        <Typography variant="h4" component="h3">
+      <Paper className='inner' component={Stack} direction='column' justifyContent='center'>
+        <Typography variant='h4' component='h3'>
           Sorry, there was an error 😭
         </Typography>
-        <Typography component="p">
+        <Typography component='p'>
           Please try again later
         </Typography>
       </Paper>

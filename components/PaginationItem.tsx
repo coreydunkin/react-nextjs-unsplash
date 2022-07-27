@@ -14,7 +14,7 @@ export default function PaginationItem({ data }) {
   return (
     <>
       {data.query !== null && totalPages > 0 &&
-        <Pagination count={totalPages} variant="outlined" shape="rounded" page={page} onChange={handleChange} />
+        <Pagination count={totalPages} variant='outlined' shape='rounded' page={page} onChange={handleChange} />
       }
     </>
   );

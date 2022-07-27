@@ -1,11 +1,10 @@
-import {createTheme, styled, ThemeProvider} from "@mui/material";
-import { useState } from 'react';
-import { rgba, tint, shade, invert, meetsContrastGuidelines } from "polished";
-import {ImageListItem, ImageListItemBar} from "@mui/material";
+import {createTheme, styled, ThemeProvider} from '@mui/material';
+import { rgba, tint, shade, invert, meetsContrastGuidelines } from 'polished';
+import {ImageListItem, ImageListItemBar} from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import Image from 'next/image';
-import {motion} from "framer-motion";
+import {motion} from 'framer-motion';
 
 const CardImg = styled(Image)`
   transform: scale(var(--scale));
@@ -17,11 +16,9 @@ const CardContainer = styled(motion.div)`
   background-color: ${props => props.theme.palette.primary.main};
   line-height:0;
   cursor: pointer;
-  //transform: scale(1)  translate3d( 0, 0, 0);
 `
 
 const CardText = styled(ImageListItemBar)`
-  //transform: scale(1)  translate3d( 0, 0, 0); 
   background-color: ${props => props.theme.palette.primary.main};
   .MuiImageListItemBar-title {
     color: ${props => props.theme.palette.primary.contrastText};
@@ -53,7 +50,7 @@ export default function ImageItem({ item }) {
   });
 
   const cardAnimations = {
-    initialAnim: {'--textMargin': "7px 0", '--scale': 1, opacity: 0.2},
+    initialAnim: {'--textMargin': '7px 0', '--scale': 1, opacity: 0.2},
     anim: {opacity: 1},
     transitionAnim: {
       opacityAnim: ({ opacity: { delay: 0.2 + (parseInt(`0.${item.indexNum}5`) * 3), duration: 0.4 }})
@@ -73,7 +70,7 @@ export default function ImageItem({ item }) {
           animate={cardAnimations.anim}
           transition={cardAnimations.transitionAnim.opacityAnim}
         >
-          <CardImg width={item.width} height={item.height} src={item.urls.small} alt={item.id} blurDataURL={item.urls.thumb} placeholder={"blur"} />
+          <CardImg width={item.width} height={item.height} src={item.urls.small} alt={item.id} blurDataURL={item.urls.thumb} placeholder={'blur'} />
           <CardText
             title={<p><span>Author: </span>@{item.user.username}</p>}
             subtitle={item.author}
