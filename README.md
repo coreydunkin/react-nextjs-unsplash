@@ -3,6 +3,8 @@
 ## Introduction
 A Next.js application using Unsplash-js api along with SWR to fetch images.
 
+Demo here: https://react-nextjs-unsplash.vercel.app
+
 This is a [Next.js][next] application skeleton. 
 Pages are in the `pages` directory. 
 Components are in the `components` directory.
@@ -20,7 +22,7 @@ You can start the dev server by running:
 yarn dev
 ```
 
-You'll need to fetch an API key from unsplash, then you can link to that api key from your env.local file
+You'll need to fetch an API key from the Unsplash API, then you can link to that api key from your env.local file
 
 Have fun!
 
