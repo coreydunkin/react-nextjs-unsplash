@@ -5,6 +5,8 @@ import {useTheme} from '@mui/material/styles';
 
 export default function ImageGallery({ data }) {
   const theme = useTheme();
+  // useMediaQuery handles the breakpoint size, if it's
+  // small, we use 1 column, if it's a larger width, we use 3
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <ImageList variant='masonry' cols={!matches ? 1 : 3} gap={8}>

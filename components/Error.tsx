@@ -12,6 +12,7 @@ const ErrorContainer = styled(Box)`
   .inner {
     width: 100%;
     background: none;
+    box-shadow: none;
   }
 `
 
