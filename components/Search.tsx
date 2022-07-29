@@ -17,6 +17,12 @@ export default function Search() {
     setPage(1);
   }
 
+  function handleSearch(event) {
+    event.preventDefault();
+    setQuery(searchValue);
+    setPage(1);
+  }
+
   // When we come back to the home page, where search is available, retain the search field
   useEffect(() => {
     query !== null && setSearchValue(query);
@@ -32,7 +38,7 @@ export default function Search() {
           sx={{ ml: 1, flex: 1 }}
           value={searchValue}
           placeholder='Search for images'
-          inputProps={{ 'aria-label': 'search google maps' }}
+          inputProps={{ 'aria-label': 'Search for images' }}
           onChange={(e) => {
             setSearchValue(e.target.value);
           }}
@@ -50,8 +56,8 @@ export default function Search() {
           type='submit'
           sx={{ p: '10px' }}
           aria-label='search'
-          onClick={(e) => {e.preventDefault(), setQuery(searchValue), setPage(1)}}
-        >
+          onClick={handleSearch}
+          >
           <SearchIcon  />
         </IconButton>
       </Paper>

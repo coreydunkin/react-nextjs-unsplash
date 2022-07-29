@@ -20,7 +20,6 @@ export default function getUser(
       res.statusCode = 404;
       res.setHeader('Content-Type', 'application/json');
       res.setHeader('Cache-Control', 'max-age=180000');
-      //res.json(error);
       res.status(404).json(error);
       resolve();
     })

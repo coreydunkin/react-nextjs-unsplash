@@ -12,7 +12,7 @@ export default function PaginationItem() {
     data?.totalPages && data?.totalPages !== totalPages && setTotalPages(data?.totalPages);
   },[data]);
 
-  const handleChange = (event, value) => {
+  const handleChange = (value) => {
     setPage(value);
   };
 
