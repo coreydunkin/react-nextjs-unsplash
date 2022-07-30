@@ -27,7 +27,7 @@ export default function User() {
       {loading && <Loading />}
       {error && <Error />}
 
-      {data && data.total > 0 && <ImageGallery/>}
+      {data && data.total > 0 && <ImageGallery data={data?.results}/>}
     </div>
   )
 }

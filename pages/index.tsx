@@ -22,7 +22,7 @@ export default function Home() {
         </Grid>
         {loading && <Loading />}
         {error && <Error />}
-        {data && <ImageGallery/>}
+        {data && <ImageGallery data={data.results}/>}
       </div>
     )
 }

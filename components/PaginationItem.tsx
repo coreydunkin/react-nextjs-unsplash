@@ -11,11 +11,9 @@ export default function PaginationItem() {
   useEffect(() => {
     data?.totalPages && data?.totalPages !== totalPages && setTotalPages(data?.totalPages);
   },[data]);
-
-  const handleChange = (value) => {
+  const handleChange = (event, value) => {
     setPage(value);
   };
-
   return (
     <>
       {query !== null && totalPages > 0 &&
